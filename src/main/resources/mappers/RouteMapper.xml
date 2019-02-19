@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hong.bus.dao.RouteMapper">
+  <resultMap id="BaseResultMap" type="hong.bus.pojo.Route">
+    <constructor>
+      <idArg column="pk_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <idArg column="route_code" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="route_detail" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="creator" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="create_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="modifier" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="modify_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ts" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="dr" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="def01" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="def02" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="def03" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="def04" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="def05" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="def06" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="def07" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="def08" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="def09" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="def10" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    pk_id, route_code, route_detail, creator, create_time, modifier, modify_time, ts, 
+    dr, def01, def02, def03, def04, def05, def06, def07, def08, def09, def10
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="hong.bus.pojo.RouteKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from routes
+    where pk_id = #{pkId,jdbcType=BIGINT}
+      and route_code = #{routeCode,jdbcType=VARCHAR}
+      and dr = '0'
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="hong.bus.pojo.RouteKey">
+    delete from routes
+    where pk_id = #{pkId,jdbcType=BIGINT}
+      and route_code = #{routeCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="hong.bus.pojo.Route">
+    insert into routes (pk_id, route_code, route_detail, 
+      creator, create_time, modifier, 
+      modify_time, ts, dr, 
+      def01, def02, def03, 
+      def04, def05, def06, 
+      def07, def08, def09, 
+      def10)
+    values (#{pkId,jdbcType=BIGINT}, #{routeCode,jdbcType=VARCHAR}, #{routeDetail,jdbcType=VARCHAR}, 
+      #{creator,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{modifier,jdbcType=VARCHAR}, 
+      #{modifyTime,jdbcType=VARCHAR}, #{ts,jdbcType=VARCHAR}, #{dr,jdbcType=INTEGER}, 
+      #{def01,jdbcType=VARCHAR}, #{def02,jdbcType=VARCHAR}, #{def03,jdbcType=VARCHAR}, 
+      #{def04,jdbcType=VARCHAR}, #{def05,jdbcType=VARCHAR}, #{def06,jdbcType=VARCHAR}, 
+      #{def07,jdbcType=VARCHAR}, #{def08,jdbcType=VARCHAR}, #{def09,jdbcType=VARCHAR}, 
+      #{def10,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="hong.bus.pojo.Route">
+    insert into routes
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pkId != null">
+        pk_id,
+      </if>
+      <if test="routeCode != null">
+        route_code,
+      </if>
+      <if test="routeDetail != null">
+        route_detail,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="modifier != null">
+        modifier,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+      <if test="ts != null">
+        ts,
+      </if>
+      <if test="dr != null">
+        dr,
+      </if>
+      <if test="def01 != null">
+        def01,
+      </if>
+      <if test="def02 != null">
+        def02,
+      </if>
+      <if test="def03 != null">
+        def03,
+      </if>
+      <if test="def04 != null">
+        def04,
+      </if>
+      <if test="def05 != null">
+        def05,
+      </if>
+      <if test="def06 != null">
+        def06,
+      </if>
+      <if test="def07 != null">
+        def07,
+      </if>
+      <if test="def08 != null">
+        def08,
+      </if>
+      <if test="def09 != null">
+        def09,
+      </if>
+      <if test="def10 != null">
+        def10,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pkId != null">
+        #{pkId,jdbcType=BIGINT},
+      </if>
+      <if test="routeCode != null">
+        #{routeCode,jdbcType=VARCHAR},
+      </if>
+      <if test="routeDetail != null">
+        #{routeDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null">
+        #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="ts != null">
+        #{ts,jdbcType=VARCHAR},
+      </if>
+      <if test="dr != null">
+        #{dr,jdbcType=INTEGER},
+      </if>
+      <if test="def01 != null">
+        #{def01,jdbcType=VARCHAR},
+      </if>
+      <if test="def02 != null">
+        #{def02,jdbcType=VARCHAR},
+      </if>
+      <if test="def03 != null">
+        #{def03,jdbcType=VARCHAR},
+      </if>
+      <if test="def04 != null">
+        #{def04,jdbcType=VARCHAR},
+      </if>
+      <if test="def05 != null">
+        #{def05,jdbcType=VARCHAR},
+      </if>
+      <if test="def06 != null">
+        #{def06,jdbcType=VARCHAR},
+      </if>
+      <if test="def07 != null">
+        #{def07,jdbcType=VARCHAR},
+      </if>
+      <if test="def08 != null">
+        #{def08,jdbcType=VARCHAR},
+      </if>
+      <if test="def09 != null">
+        #{def09,jdbcType=VARCHAR},
+      </if>
+      <if test="def10 != null">
+        #{def10,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="hong.bus.pojo.Route">
+    update routes
+    <set>
+      <if test="routeDetail != null">
+        route_detail = #{routeDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null">
+        modifier = #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=VARCHAR},
+      </if>
+      <if test="ts != null">
+        ts = #{ts,jdbcType=VARCHAR},
+      </if>
+      <if test="dr != null">
+        dr = #{dr,jdbcType=INTEGER},
+      </if>
+      <if test="def01 != null">
+        def01 = #{def01,jdbcType=VARCHAR},
+      </if>
+      <if test="def02 != null">
+        def02 = #{def02,jdbcType=VARCHAR},
+      </if>
+      <if test="def03 != null">
+        def03 = #{def03,jdbcType=VARCHAR},
+      </if>
+      <if test="def04 != null">
+        def04 = #{def04,jdbcType=VARCHAR},
+      </if>
+      <if test="def05 != null">
+        def05 = #{def05,jdbcType=VARCHAR},
+      </if>
+      <if test="def06 != null">
+        def06 = #{def06,jdbcType=VARCHAR},
+      </if>
+      <if test="def07 != null">
+        def07 = #{def07,jdbcType=VARCHAR},
+      </if>
+      <if test="def08 != null">
+        def08 = #{def08,jdbcType=VARCHAR},
+      </if>
+      <if test="def09 != null">
+        def09 = #{def09,jdbcType=VARCHAR},
+      </if>
+      <if test="def10 != null">
+        def10 = #{def10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pk_id = #{pkId,jdbcType=BIGINT}
+      or route_code = #{routeCode,jdbcType=VARCHAR}
+      and dr = '0'
+  </update>
+  <update id="updateByPrimaryKey" parameterType="hong.bus.pojo.Route">
+    update routes
+    set route_detail = #{routeDetail,jdbcType=VARCHAR},
+      creator = #{creator,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      modifier = #{modifier,jdbcType=VARCHAR},
+      modify_time = #{modifyTime,jdbcType=VARCHAR},
+      ts = #{ts,jdbcType=VARCHAR},
+      def01 = #{def01,jdbcType=VARCHAR},
+      def02 = #{def02,jdbcType=VARCHAR},
+      def03 = #{def03,jdbcType=VARCHAR},
+      def04 = #{def04,jdbcType=VARCHAR},
+      def05 = #{def05,jdbcType=VARCHAR},
+      def06 = #{def06,jdbcType=VARCHAR},
+      def07 = #{def07,jdbcType=VARCHAR},
+      def08 = #{def08,jdbcType=VARCHAR},
+      def09 = #{def09,jdbcType=VARCHAR},
+      def10 = #{def10,jdbcType=VARCHAR}
+    where pk_id = #{pkId,jdbcType=BIGINT}
+      or route_code = #{routeCode,jdbcType=VARCHAR}
+      and dr = '0'
+  </update>
+  
+  <select id="checkRouteCode" parameterType="string" resultType="int">
+  	select 
+	  	count(1)
+	  	from routes
+	  	where route_code = #{code}
+	  	and dr = '0'
+  </select>
+  
+   <update id="deleteLogicalByPrimaryKey" parameterType="hong.bus.pojo.Route">
+    update routes
+    set 
+      dr = '1'
+    where route_code = #{routeCode,jdbcType=VARCHAR}
+    and dr = '0'
+  </update>
+  
+   <select id="selectAnywhereByConditions" parameterType="string" resultMap="BaseResultMap">
+  		select
+  		<include refid="Base_Column_List" />
+  	from 
+  		routes 
+  	where 
+  		${searchConditions} 
+  	and 
+  		dr = '0'
+  </select>
+  
+  <select id="selectAnywhereByCondition" parameterType="string" resultMap="BaseResultMap">
+	select
+	<include refid="Base_Column_List" />
+  	from 
+  		routes
+  	where 
+  		${searchCondition} like '%' #{searchValue} '%' 
+  	and 
+  		dr = '0'
+  </select>
+  
+  <select id="selectRouteByStationName" parameterType="string" resultMap="BaseResultMap">
+	select
+	<include refid="Base_Column_List" />
+  	from 
+  		routes 
+  	where 
+  		route_detail regexp '${searchValues}'
+  	and 
+  		dr = '0'
+  </select>
+  
+</mapper>

@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="hong.bus.dao.DeviceMapper">
+  <resultMap id="BaseResultMap" type="hong.bus.pojo.Device">
+    <constructor>
+      <idArg column="pk_id" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="device_code" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="device_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="device_state" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="device_bus" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="creator" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="create_time" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="modifier" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="modify" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="ts" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="dr" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="def01" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="def02" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="def03" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="def04" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="def05" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="def06" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="def07" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="def08" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="def09" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="def10" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    pk_id, device_code, device_name, device_state, device_bus, creator, create_time, 
+    modifier, modify, ts, dr, def01, def02, def03, def04, def05, def06, def07, def08, 
+    def09, def10
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from devices
+    where pk_id = #{pkId,jdbcType=BIGINT}
+    and dr = '0'
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from devices
+    where pk_id = #{pkId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="hong.bus.pojo.Device">
+    insert into devices (pk_id, device_code, device_name, 
+      device_state, device_bus, creator, 
+      create_time, modifier, modify, 
+      ts, dr, def01, def02, 
+      def03, def04, def05, 
+      def06, def07, def08, 
+      def09, def10)
+    values (#{pkId,jdbcType=BIGINT}, #{deviceCode,jdbcType=VARCHAR}, #{deviceName,jdbcType=VARCHAR}, 
+      #{deviceState,jdbcType=VARCHAR}, #{deviceBus,jdbcType=VARCHAR}, #{creator,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=VARCHAR}, #{modifier,jdbcType=VARCHAR}, #{modify,jdbcType=VARCHAR}, 
+      #{ts,jdbcType=VARCHAR}, #{dr,jdbcType=INTEGER}, #{def01,jdbcType=VARCHAR}, #{def02,jdbcType=VARCHAR}, 
+      #{def03,jdbcType=VARCHAR}, #{def04,jdbcType=VARCHAR}, #{def05,jdbcType=VARCHAR}, 
+      #{def06,jdbcType=VARCHAR}, #{def07,jdbcType=VARCHAR}, #{def08,jdbcType=VARCHAR}, 
+      #{def09,jdbcType=VARCHAR}, #{def10,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="hong.bus.pojo.Device">
+    insert into devices
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pkId != null">
+        pk_id,
+      </if>
+      <if test="deviceCode != null">
+        device_code,
+      </if>
+      <if test="deviceName != null">
+        device_name,
+      </if>
+      <if test="deviceState != null">
+        device_state,
+      </if>
+      <if test="deviceBus != null">
+        device_bus,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="modifier != null">
+        modifier,
+      </if>
+      <if test="modify != null">
+        modify,
+      </if>
+      <if test="ts != null">
+        ts,
+      </if>
+      <if test="dr != null">
+        dr,
+      </if>
+      <if test="def01 != null">
+        def01,
+      </if>
+      <if test="def02 != null">
+        def02,
+      </if>
+      <if test="def03 != null">
+        def03,
+      </if>
+      <if test="def04 != null">
+        def04,
+      </if>
+      <if test="def05 != null">
+        def05,
+      </if>
+      <if test="def06 != null">
+        def06,
+      </if>
+      <if test="def07 != null">
+        def07,
+      </if>
+      <if test="def08 != null">
+        def08,
+      </if>
+      <if test="def09 != null">
+        def09,
+      </if>
+      <if test="def10 != null">
+        def10,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pkId != null">
+        #{pkId,jdbcType=BIGINT},
+      </if>
+      <if test="deviceCode != null">
+        #{deviceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceName != null">
+        #{deviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceState != null">
+        #{deviceState,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceBus != null">
+        #{deviceBus,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null">
+        #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="modify != null">
+        #{modify,jdbcType=VARCHAR},
+      </if>
+      <if test="ts != null">
+        #{ts,jdbcType=VARCHAR},
+      </if>
+      <if test="dr != null">
+        #{dr,jdbcType=INTEGER},
+      </if>
+      <if test="def01 != null">
+        #{def01,jdbcType=VARCHAR},
+      </if>
+      <if test="def02 != null">
+        #{def02,jdbcType=VARCHAR},
+      </if>
+      <if test="def03 != null">
+        #{def03,jdbcType=VARCHAR},
+      </if>
+      <if test="def04 != null">
+        #{def04,jdbcType=VARCHAR},
+      </if>
+      <if test="def05 != null">
+        #{def05,jdbcType=VARCHAR},
+      </if>
+      <if test="def06 != null">
+        #{def06,jdbcType=VARCHAR},
+      </if>
+      <if test="def07 != null">
+        #{def07,jdbcType=VARCHAR},
+      </if>
+      <if test="def08 != null">
+        #{def08,jdbcType=VARCHAR},
+      </if>
+      <if test="def09 != null">
+        #{def09,jdbcType=VARCHAR},
+      </if>
+      <if test="def10 != null">
+        #{def10,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="hong.bus.pojo.Device">
+    update devices
+    <set>
+      <if test="deviceCode != null">
+        device_code = #{deviceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceName != null">
+        device_name = #{deviceName,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceState != null">
+        device_state = #{deviceState,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceBus != null">
+        device_bus = #{deviceBus,jdbcType=VARCHAR},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=VARCHAR},
+      </if>
+      <if test="modifier != null">
+        modifier = #{modifier,jdbcType=VARCHAR},
+      </if>
+      <if test="modify != null">
+        modify = #{modify,jdbcType=VARCHAR},
+      </if>
+      <if test="ts != null">
+        ts = #{ts,jdbcType=VARCHAR},
+      </if>
+      <if test="dr != null">
+        dr = '0',
+      </if>
+      <if test="def01 != null">
+        def01 = #{def01,jdbcType=VARCHAR},
+      </if>
+      <if test="def02 != null">
+        def02 = #{def02,jdbcType=VARCHAR},
+      </if>
+      <if test="def03 != null">
+        def03 = #{def03,jdbcType=VARCHAR},
+      </if>
+      <if test="def04 != null">
+        def04 = #{def04,jdbcType=VARCHAR},
+      </if>
+      <if test="def05 != null">
+        def05 = #{def05,jdbcType=VARCHAR},
+      </if>
+      <if test="def06 != null">
+        def06 = #{def06,jdbcType=VARCHAR},
+      </if>
+      <if test="def07 != null">
+        def07 = #{def07,jdbcType=VARCHAR},
+      </if>
+      <if test="def08 != null">
+        def08 = #{def08,jdbcType=VARCHAR},
+      </if>
+      <if test="def09 != null">
+        def09 = #{def09,jdbcType=VARCHAR},
+      </if>
+      <if test="def10 != null">
+        def10 = #{def10,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pk_id = #{pkId,jdbcType=BIGINT}
+    and dr = '0'
+  </update>
+  <update id="updateByPrimaryKey" parameterType="hong.bus.pojo.Device">
+    update devices
+    set device_code = #{deviceCode,jdbcType=VARCHAR},
+      device_name = #{deviceName,jdbcType=VARCHAR},
+      device_state = #{deviceState,jdbcType=VARCHAR},
+      device_bus = #{deviceBus,jdbcType=VARCHAR},
+      creator = #{creator,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=VARCHAR},
+      modifier = #{modifier,jdbcType=VARCHAR},
+      modify = #{modify,jdbcType=VARCHAR},
+      ts = #{ts,jdbcType=VARCHAR},
+      def01 = #{def01,jdbcType=VARCHAR},
+      def02 = #{def02,jdbcType=VARCHAR},
+      def03 = #{def03,jdbcType=VARCHAR},
+      def04 = #{def04,jdbcType=VARCHAR},
+      def05 = #{def05,jdbcType=VARCHAR},
+      def06 = #{def06,jdbcType=VARCHAR},
+      def07 = #{def07,jdbcType=VARCHAR},
+      def08 = #{def08,jdbcType=VARCHAR},
+      def09 = #{def09,jdbcType=VARCHAR},
+      def10 = #{def10,jdbcType=VARCHAR}
+    where pk_id = #{pkId,jdbcType=BIGINT}
+    and dr = '0'
+  </update>
+  
+  <update id="deleteLogicalByPrimaryKey" parameterType="hong.bus.pojo.Device">
+    update devices
+    set 
+      dr = '1'
+    where device_code = #{code}
+    and dr = '0'
+  </update>
+  
+  <select id="checkDevice" parameterType="string" resultType="int">
+  		select
+  		count(1)
+  	from 
+  		devices 
+  	where 
+  		device_code = #{deviceCode} 
+  	and 
+  		dr = '0'
+  </select>
+  
+  <select id="selectAnywhereByConditions" parameterType="string" resultMap="BaseResultMap">
+  		select
+  		<include refid="Base_Column_List" />
+  	from 
+  		devices 
+  	where 
+  		${searchConditions} 
+  	and 
+  		dr = '0'
+  </select>
+  
+  <select id="selectByBusId" parameterType="String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from devices
+    where busId = #{busId}
+    and dr = '0'
+  </select>
+  
+  <select id="selectByName" parameterType="string" resultMap="BaseResultMap">
+	select
+	<include refid="Base_Column_List" />
+  	from 
+  		devices 
+  	where 
+  		device_name like '%'#{deviceName}'%'
+  	and 
+  		dr = '0'
+  </select>
+  
+  <select id="selectAnywhereByCondition" parameterType="string" resultMap="BaseResultMap">
+	select
+	<include refid="Base_Column_List" />
+  	from 
+  		devices
+  	where 
+  		${searchCondition} like '%' #{searchValue} '%' 
+  	and 
+  		dr = '0'
+  </select>
+</mapper>
